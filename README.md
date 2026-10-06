@@ -31,7 +31,7 @@ Simulador de punto de venta (PoS) estilo OXXO que funciona en el navegador. Perm
 
 No requiere instalación ni configuración. Solo necesitas un navegador web.
 
-1. Descarga el proyecto (botón **Code → Download ZIP**) o clónalo con Git.
+1. Descarga el proyecto o clónalo con Git.
 2. Entra a la carpeta del proyecto.
 3. Abre el archivo `index.html` en tu navegador (doble clic o arrastrándolo a una ventana del navegador).
 

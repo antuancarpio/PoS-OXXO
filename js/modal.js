@@ -1,6 +1,6 @@
 function abrirModal() {
     const numero = pedirDigitos("Ingresar Numero 10 Digitos:", 10);
-    if (numero === null) return;    // si cancelan, NO se abre el modal
+    if (numero === null) return;
     alert("¡Dato Ingresado Correctamente!");
     document.getElementById("modal").style.display = "flex";
 }
