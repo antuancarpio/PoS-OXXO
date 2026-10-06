@@ -77,23 +77,23 @@ body{
 }
 
 #button1{
-    background-image: url(/img/cancelar.png);
+    background-image: url(../img/cancelar.png);
 }
 
 #button2{
-    background-image: url(/img/recarga.png);
+    background-image: url(../img/recarga.png);
 }
 
 #button3{
-    background-image: url(/img/dinero.png);
+    background-image: url(../img/dinero.png);
 }
 
 #button4{
-    background-image: url(/img/celular.png);
+    background-image: url(../img/celular.png);
 }
 
 #button5{
-    background-image: url(/img/monedas.png);
+    background-image: url(../img/monedas.png);
 }
 
 .feedback{
