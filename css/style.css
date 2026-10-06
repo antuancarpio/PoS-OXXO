@@ -1,0 +1,125 @@
+body{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; /*Fuente*/
+    background-color: beige; /*Color de fondo*/
+}
+
+.encabezado{
+    display: flex; /*Activa Flexbox*/
+    justify-content: space-between; /*Separa a los extremos*/
+    align-items: center; /*Centra verticalmente*/
+    padding: 10px 20px; /*Espacio interno*/
+    width: 100%; /*Ancho completo*/
+    box-sizing: border-box; /*Evita desbordamiento*/
+}
+
+.logo1{
+    height: 70px; /*Altura fija*/
+    width: auto; /*Ancho automático*/
+}
+
+.contenido{
+    text-align: center; /*Centra el contenido*/
+}
+.logo2{
+    height: 80px; /*Altura fija*/
+    width: auto; /*Ancho automático*/
+}
+
+.titulo{
+    margin: 0%; /*Elimina márgenes predeterminados*/
+}
+.subtitulo{
+    margin: 0%; /*Elimina márgenes predeterminados*/
+}
+
+.contenedor{
+    margin-top: 50px; /*Espacio superior*/
+    font-size: x-large; /*Tamaño de fuente grande*/
+    height: 50vh; /*Altura relativa a la ventana gráfica*/
+    max-height: 60vh; /*Altura máxima relativa a la ventana gráfica*/
+    overflow-y: auto; /*Habilita desplazamiento vertical si es necesario*/ 
+    border: 1px solid #000000; /*Borde negro*/
+    background-color: #e70020; /*Color de fondo*/
+    color: white; /*Color del texto*/
+}
+
+#carrito{
+    max-height: 50%; /*Altura máxima relativa a la ventana gráfica*/
+    width: 100%; /*Ancho completo*/
+    font-size: larger; /*Tamaño de fuente grande*/
+}
+
+.titulocantidad{
+    width: 10%; /*Ancho fijo*/
+}
+
+#cuerpo{
+    max-height: 10%; /*Altura máxima relativa a la ventana gráfica*/
+    width: 100%; /*Ancho completo*/
+    font-size: larger; /*Tamaño de fuente grande*/
+}
+
+.claseinput{
+    font-size: x-large; /*Tamaño de fuente grande*/
+    width: calc(100% - 8px); /*Ancho calculado*/
+}
+
+.claseboton{
+    height: 15vh; /*Altura relativa a la ventana gráfica*/
+    width: 28dvh; /*Ancho relativo a la ventana gráfica*/
+    background-size: 40%; /*Tamaño de la imagen de fondo*/
+    background-repeat: no-repeat; /*Evita repetir la imagen de fondo*/
+    background-position: center; /*Centra la imagen de fondo*/
+    cursor: pointer; /*Cambia el cursor al pasar sobre el botón*/
+    border: none; /*Elimina el borde predeterminado*/
+    background-color: #fbb110; /*Color de fondo*/
+    margin: 10px; /*Espacio externo*/
+}
+
+#button1{
+    background-image: url(/img/cancelar.png);
+}
+
+#button2{
+    background-image: url(/img/recarga.png);
+}
+
+#button3{
+    background-image: url(/img/dinero.png);
+}
+
+#button4{
+    background-image: url(/img/celular.png);
+}
+
+#button5{
+    background-image: url(/img/monedas.png);
+}
+
+.feedback{
+    font-size: xx-large; /*Tamaño de fuente muy grande*/
+    font-weight: bolder; /*Fuente en negrita*/
+    color: red; /*Color del texto*/
+}
+
+.total{
+    display: flex; /*Activa Flexbox*/
+    border: 2px solid #000000; /*Borde negro*/
+    height: 7.5dvw; /*Altura relativa a la ventana gráfica*/
+    width: 30%; /*Ancho fijo*/
+    font-size: xx-large; /*Tamaño de fuente muy grande*/    
+    align-items: center; /*Centra el contenido verticalmente*/
+    justify-content: center; /*Centra el contenido horizontalmente*/
+}
+
+.contenedor2{
+    display: flex; /*Activa Flexbox*/
+    align-items: center; /*Centra el contenido verticalmente*/
+    justify-content: space-between; /*Distribuye el contenido horizontalmente*/
+    width: 100%; /*Ancho completo*/
+}
+
+.grupobotones{
+    display: flex; /*Activa Flexbox*/
+    gap: 10px; /*Espacio entre los botones*/    
+}
