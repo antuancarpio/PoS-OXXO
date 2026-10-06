@@ -1,125 +1,144 @@
-body{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; /*Fuente*/
-    background-color: beige; /*Color de fondo*/
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: beige;
+    margin: 0;
 }
 
-.encabezado{
-    display: flex; /*Activa Flexbox*/
-    justify-content: space-between; /*Separa a los extremos*/
-    align-items: center; /*Centra verticalmente*/
-    padding: 10px 20px; /*Espacio interno*/
-    width: 100%; /*Ancho completo*/
-    box-sizing: border-box; /*Evita desbordamiento*/
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.logo1{
-    height: 70px; /*Altura fija*/
-    width: auto; /*Ancho automático*/
+.logo1 {
+    height: 70px;
+    width: auto;
 }
 
-.contenido{
-    text-align: center; /*Centra el contenido*/
-}
-.logo2{
-    height: 80px; /*Altura fija*/
-    width: auto; /*Ancho automático*/
+.logo2 {
+    height: 80px;
+    width: auto;
 }
 
-.titulo{
-    margin: 0%; /*Elimina márgenes predeterminados*/
-}
-.subtitulo{
-    margin: 0%; /*Elimina márgenes predeterminados*/
+.contenido {
+    text-align: center;
 }
 
-.contenedor{
-    margin-top: 50px; /*Espacio superior*/
-    font-size: x-large; /*Tamaño de fuente grande*/
-    height: 50vh; /*Altura relativa a la ventana gráfica*/
-    max-height: 60vh; /*Altura máxima relativa a la ventana gráfica*/
-    overflow-y: auto; /*Habilita desplazamiento vertical si es necesario*/ 
-    border: 1px solid #000000; /*Borde negro*/
-    background-color: #e70020; /*Color de fondo*/
-    color: white; /*Color del texto*/
+.titulo,
+.subtitulo {
+    margin: 0;
 }
 
-#carrito{
-    max-height: 50%; /*Altura máxima relativa a la ventana gráfica*/
-    width: 100%; /*Ancho completo*/
-    font-size: larger; /*Tamaño de fuente grande*/
+/* ===== TABLA DE PRODUCTOS ===== */
+.contenedor {
+    margin: 30px 10px 0;
+    font-size: x-large;
+    height: 50vh;
+    overflow-y: auto;
+    border: 1px solid #000000;
+    background-color: #e70020;
+    color: white;
 }
 
-.titulocantidad{
-    width: 10%; /*Ancho fijo*/
+#carrito {
+    width: 100%;
+    font-size: larger;
+    border-collapse: collapse;
 }
 
-#cuerpo{
-    max-height: 10%; /*Altura máxima relativa a la ventana gráfica*/
-    width: 100%; /*Ancho completo*/
-    font-size: larger; /*Tamaño de fuente grande*/
+#carrito thead th {
+    position: sticky;
+    top: 0;
+    background-color: #e70020;
 }
 
-.claseinput{
-    font-size: x-large; /*Tamaño de fuente grande*/
-    width: calc(100% - 8px); /*Ancho calculado*/
+.titulocantidad {
+    width: 10%;
 }
 
-.claseboton{
-    height: 15vh; /*Altura relativa a la ventana gráfica*/
-    width: 28dvh; /*Ancho relativo a la ventana gráfica*/
-    background-size: 40%; /*Tamaño de la imagen de fondo*/
-    background-repeat: no-repeat; /*Evita repetir la imagen de fondo*/
-    background-position: center; /*Centra la imagen de fondo*/
-    cursor: pointer; /*Cambia el cursor al pasar sobre el botón*/
-    border: none; /*Elimina el borde predeterminado*/
-    background-color: #fbb110; /*Color de fondo*/
-    margin: 10px; /*Espacio externo*/
+#cuerpo td {
+    padding: 2px 8px;
 }
 
-#button1{
-    background-image: url(../img/cancelar.png);
+/* ===== INPUT ===== */
+.claseinput {
+    display: block;
+    box-sizing: border-box;
+    font-size: x-large;
+    width: calc(100% - 20px);
+    margin: 0 10px;
 }
 
-#button2{
-    background-image: url(../img/recarga.png);
+/* ===== BOTONES ===== */
+.claseboton {
+    height: 15vh;
+    flex: 1;
+    min-width: 0;
+    background-size: 65%;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border: none;
+    background-color: #fbb110;
+    margin: 10px 0;
 }
 
-#button3{
-    background-image: url(../img/dinero.png);
+.claseboton:hover {
+    background-color: #ffc83d;
 }
 
-#button4{
-    background-image: url(../img/celular.png);
+.claseboton:active {
+    transform: scale(0.97);
 }
 
-#button5{
-    background-image: url(../img/monedas.png);
+#button1 { background-image: url(../img/cancelar.png); }
+#button2 { background-image: url(../img/recarga.png); }
+#button3 { background-image: url(../img/dinero.png); }
+#button4 { background-image: url(../img/celular.png); }
+#button5 { background-image: url(../img/monedas.png); }
+
+.feedback {
+    flex: 1;
+    text-align: center;
+    padding: 0 10px;
+    font-size: xx-large;
+    font-weight: bolder;
+    color: red;
 }
 
-.feedback{
-    font-size: xx-large; /*Tamaño de fuente muy grande*/
-    font-weight: bolder; /*Fuente en negrita*/
-    color: red; /*Color del texto*/
+.total {
+    display: flex;
+    box-sizing: border-box;
+    border: 2px solid #000000;
+    height: 15vh;
+    min-width: 30%;
+    padding: 0 10px;
+    margin: 10px;
+    font-size: xx-large;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
 }
 
-.total{
-    display: flex; /*Activa Flexbox*/
-    border: 2px solid #000000; /*Borde negro*/
-    height: 7.5dvw; /*Altura relativa a la ventana gráfica*/
-    width: 30%; /*Ancho fijo*/
-    font-size: xx-large; /*Tamaño de fuente muy grande*/    
-    align-items: center; /*Centra el contenido verticalmente*/
-    justify-content: center; /*Centra el contenido horizontalmente*/
+.total h1 {
+    margin: 0;
+    white-space: nowrap;
 }
 
-.contenedor2{
-    display: flex; /*Activa Flexbox*/
-    align-items: center; /*Centra el contenido verticalmente*/
-    justify-content: space-between; /*Distribuye el contenido horizontalmente*/
-    width: 100%; /*Ancho completo*/
+.contenedor2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
 }
 
-.grupobotones{
-    display: flex; /*Activa Flexbox*/
-    gap: 10px; /*Espacio entre los botones*/    
+.grupobotones {
+    display: flex;
+    flex: 3;
+    gap: 10px;
 }

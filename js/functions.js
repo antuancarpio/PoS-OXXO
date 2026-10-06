@@ -72,7 +72,7 @@ const productos = [
   ["064", "Halls Miel 25g", 13.00],
   ["065", "Trident Menta 18g", 15.00],
   ["066", "Clorets 18g", 15.00],
-  ["067", "SIXXX SEVEENNN (67 pz)", 67.00],
+  ["067", "Sabritas Ruffles", 24.00],
   ["068", "Paleta Payaso 45g", 18.00],
   ["069", "Duvalin Avellana Vainilla", 6.00],
   ["070", "Mazapán De la Rosa 28g", 8.00],
@@ -112,134 +112,142 @@ const productos = [
   ["100", "Encendedor BIC Clásico", 22.00]
 ];
 
-var total = 0;
-var subtotal= 0;
-function buscarProducto(event){
-    if(event.keyCode === 13){
-        var cantidad = 1;
-        var codigo_producto = document.getElementById('codigodelproducto').value;
-        if(codigo_producto.indexOf("*")===-1){
-            cantidad= 1;
-        }else{
-            cantidad=codigo_producto.split("*")[0];
-            codigo_producto=codigo_producto.split("*")[1];
 
-        }
-        for(let i = 0; i < productos.length; i++){
-            if(productos[i][0] === codigo_producto){
-                var tabla = document.getElementById('cuerpo');
-                var renglon = tabla.insertRow();
+// El total se guarda en CENTAVOS (enteros) para evitar errores de decimales
+let total = 0;
 
-                var celda1 = renglon.insertCell(0);
-                var celda2 = renglon.insertCell(1);
-                var celda3 = renglon.insertCell(2);
-                var celda4 = renglon.insertCell(3);
+function formatoDinero(centavos) {
+    return "$" + (centavos / 100).toFixed(2);
+}
 
-                celda1.setAttribute("style", "text-align: center;");
-                celda2.setAttribute("style", "text-align: left;");
-                celda3.setAttribute("style", "text-align: right;");
-                celda4.setAttribute("style", "text-align: right;");
+function actualizarTotal() {
+    document.getElementById("total").textContent = formatoDinero(total);
+}
 
-                celda1.innerHTML = cantidad;
-                celda2.innerHTML = productos[i][1];
-                celda3.innerHTML = productos[i][2].toFixed(2);
-                subtotal = cantidad * parseFloat(productos[i][2].toFixed(2));
-                celda4.innerHTML = subtotal;
+function mostrarMensaje(texto) {
+    const feedback = document.getElementById("feedback");
+    feedback.textContent = texto;
+}
 
-                total += parseFloat(subtotal.toFixed(2));
-                document.getElementById("total").innerHTML = "$" + total.toFixed(2);
-                subtotal=0;
-                break;
-            }
-        }
-        document.getElementById("codigodelproducto").value="";
+function agregarRenglon(cantidad, descripcion, precioCentavos, alineacion = "left") {
+    const fila = document.getElementById("cuerpo").insertRow();
+    const subtotal = cantidad * precioCentavos;
+    const datos = [
+        cantidad,
+        descripcion,
+        (precioCentavos / 100).toFixed(2),
+        (subtotal / 100).toFixed(2)
+    ];
+    const alineaciones = ["center", alineacion, "right", "right"];
+
+    datos.forEach((dato, i) => {
+        const celda = fila.insertCell(i);
+        celda.style.textAlign = alineaciones[i];
+        celda.textContent = dato;
+    });
+
+    total += subtotal;
+    actualizarTotal();
+}
+
+function pedirMonto(mensaje) {
+    const texto = prompt(mensaje);
+    if (texto === null) return null;
+    const monto = parseFloat(texto);
+    if (!Number.isFinite(monto) || monto <= 0) {
+        alert("¡Error! Ingresa un monto válido mayor a 0.");
+        return null;
+    }
+    return Math.round(monto * 100);
+}
+
+function pedirDigitos(mensaje, cantidadDigitos) {
+    const regex = new RegExp("^\\d{" + cantidadDigitos + "}$");
+    while (true) {
+        const texto = prompt(mensaje);
+        if (texto === null) return null;
+        if (regex.test(texto.trim())) return texto.trim();
+        alert("¡Error! Debes ingresar " + cantidadDigitos + " dígitos.");
     }
 }
 
+function nuevaVenta() {
+    document.getElementById("cuerpo").innerHTML = "";
+    document.getElementById("codigodelproducto").value = "";
+    total = 0;
+    actualizarTotal();
+}
+
+function buscarProducto(event) {
+    if (event.key !== "Enter") return;
+
+    const input = document.getElementById("codigodelproducto");
+    let texto = input.value.trim();
+    let cantidad = 1;
+    let codigo = texto;
+
+    if (texto.includes("*")) {
+        const partes = texto.split("*");
+        cantidad = parseInt(partes[0], 10);
+        codigo = partes[1].trim();
+    }
+
+    if (!Number.isInteger(cantidad) || cantidad <= 0) {
+        mostrarMensaje("Cantidad inválida");
+        input.value = "";
+        return;
+    }
+
+    const producto = productos.find(p => p[0] === codigo);
+    if (!producto) {
+        mostrarMensaje("Producto no encontrado");
+        input.value = "";
+        return;
+    }
+
+    mostrarMensaje("");
+    agregarRenglon(cantidad, producto[1], Math.round(producto[2] * 100));
+    input.value = "";
+}
 
 function cancelarVenta() {
-    var resultado = confirm("Desea Cancelar la Venta?");
-
-    if (resultado == true) {
-        document.getElementById("cuerpo").innerHTML = "";
-        document.getElementById("total").innerHTML = "$0.00";
-        document.getElementById("codigodelproducto").value = "";
+    if (confirm("Desea Cancelar la Venta?")) {
+        nuevaVenta(); 
+        mostrarMensaje("");
     }
 }
-
 
 function saldoCamion() {
-    var saldo = prompt("Ingresar Cantidad de Saldo UNE: ");
-    var tabla = document.getElementById('cuerpo');
-    var renglon = tabla.insertRow();
-
-    var celda1 = renglon.insertCell(0);
-    var celda2 = renglon.insertCell(1);
-    var celda3 = renglon.insertCell(2);
-    var celda4 = renglon.insertCell(3);
-
-    celda1.setAttribute("style", "text-align: center;");
-    celda2.setAttribute("style", "text-align: left;");
-    celda3.setAttribute("style", "text-align: right;");
-    celda4.setAttribute("style", "text-align: right;");
-
-    celda1.innerHTML = "1";
-    celda2.innerHTML = "Saldo UNE";
-    celda3.innerHTML = saldo;
-    celda4.innerHTML = saldo;
-
-    total += parseFloat(saldo);
-    document.getElementById("total").innerHTML = "$" + total.toFixed(2).toString();
+    const monto = pedirMonto("Ingresar Cantidad de Saldo UNE: ");
+    if (monto === null) return;
+    agregarRenglon(1, "Saldo UNE", monto);
 }
 
-function pagar(){
-    //alert(total);
-    var feria=parseFloat(document.getElementById("codigodelproducto").value)-total;
-    document.getElementById("codigodelproducto").value = "cambio: "+ feria +"$";
+function transferencia() {
+    const tarjeta = pedirDigitos("Ingresar Numero 16 Digitos:", 16);
+    if (tarjeta === null) return;
+    const monto = pedirMonto("Ingresar Monto a Transferir");
+    if (monto === null) return;
+    agregarRenglon(1, "Transferencia ****" + tarjeta.slice(-4), monto, "center");
 }
 
-function transferencia(){
-    let input;
-    let regex16Digitos = /^\d{16}$/; // Valida que sean exactamente 16 números
-
-    do {
-        input = prompt("Ingresar Numero 16 Digitos:");
-        
-        // Si el usuario presiona "Cancelar", input será null, salimos para evitar bucle infinito
-        if (input === null) {
-            break;
-        }
-        
-        if (!regex16Digitos.test(input)) {
-            alert("¡Error! Debes Ingresar 16 Digitos.");
-        }
-        
-    } while (!regex16Digitos.test(input));
-
-    if (input !== null) {
-        alert("¡Dato Ingresado Correctamente!");
+function pagar() {
+    if (total === 0) {
+        mostrarMensaje("No hay productos");
+        return;
     }
-
-    var saldo = prompt("Ingresar Monto a Transferir");
-    var tabla = document.getElementById('cuerpo');
-    var renglon = tabla.insertRow();
-
-    var celda1 = renglon.insertCell(0);
-    var celda2 = renglon.insertCell(1);
-    var celda3 = renglon.insertCell(2);
-    var celda4 = renglon.insertCell(3);
-
-    celda1.setAttribute("style", "text-align: center;");
-    celda2.setAttribute("style", "text-align: center;");
-    celda3.setAttribute("style", "text-align: right;");
-    celda4.setAttribute("style", "text-align: right;");
-
-    celda1.innerHTML = "1";
-    celda2.innerHTML = input;
-    celda3.innerHTML = saldo;
-    celda4.innerHTML = saldo;
-
-    total += parseFloat(saldo);
-    document.getElementById("total").innerHTML = "$" + total.toFixed(2).toString();
-
+    const input = document.getElementById("codigodelproducto");
+    const pago = parseFloat(input.value);
+    if (!Number.isFinite(pago)) {
+        mostrarMensaje("Escribe con cuánto paga el cliente");
+        return;
+    }
+    const pagoCentavos = Math.round(pago * 100);
+    if (pagoCentavos < total) {
+        mostrarMensaje("Falta: " + formatoDinero(total - pagoCentavos));
+        return;
+    }
+    const cambio = pagoCentavos - total;
+    nuevaVenta();
+    mostrarMensaje("Cambio: " + formatoDinero(cambio));
 }

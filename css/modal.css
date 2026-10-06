@@ -1,21 +1,43 @@
-.modal{
-    display: none; /* Oculta el modal por defecto */
-    position: fixed; /* Posición fija para que se mantenga en la pantalla */
-    inset: 0; /* Posiciona el modal en la esquina superior izquierda */
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
 }
 
-.contenido-modal{
-    background-color: white; /* Fondo blanco para el contenido del modal */
-    padding: 30px; /* Espaciado interno */
-    border-radius: 10px; /* Bordes redondeados */
-    text-align: center; /* Centra el contenido del modal */
+.contenido-modal {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 90vw;
 }
 
-.contenido-modal img{
-    width: 100px; /* Ancho fijo para la imagen */
-    margin: 10px; /* Espaciado alrededor de la imagen */
-    cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+.contenido-modal img {
+    width: 100px;
+    max-width: 20%;
+    height: auto;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.contenido-modal img:hover {
+    transform: scale(1.08);
+}
+
+.contenido-modal button {
+    font-size: x-large;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 8px;
+    background-color: #e70020;
+    color: white;
+    cursor: pointer;
+}
+
+.contenido-modal button:hover {
+    background-color: #c4001b;
 }
