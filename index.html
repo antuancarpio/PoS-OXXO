@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de PoS OXXO</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/modal.css">
+    <script src="./js/functions.js"></script>
+    <script src="./js/modal.js"></script>
+</head>
+
+<body>
+<header class="encabezado">
+    <!--IMG ARRIBA IZQUIERDA-->
+    <img src="./img/oxxo.webp" class="logo1">
+
+    <!--TITULO PRINCIPAL-->
+    <div class="contenido">
+        <h1 class="titulo">OXXO Siempre Cerca de Ti</h1>
+        <h2 class="subtitulo">No es Bueno pero es Barato</h2>
+    </div>
+
+    <!--IMG ARRIBA DERECHA-->
+    <img src="./img/Spin.png" class="logo2">
+</header>
+
+<!--AREA PRODUCTOS-->
+<div class="contenedor">
+    <table id="carrito">
+        <thead>
+            <tr>
+                <th class="tituloCantidad">Cantidad</th>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpo"></tbody>
+    </table>
+</div>
+
+<!--Unico Input-->
+<input type="text" id="codigodelproducto" class="claseinput" placeholder="Ingresar SKU de Producto" onkeydown="buscarProducto(event)">
+
+<!--Botones Tipo Oxxo-->
+<div class="contenedor2">
+    <div class="grupobotones">
+        <input type="button" id="button1" class="claseboton" onclick="cancelarVenta()">
+        <input type="button" id="button2" class="claseboton" onclick="saldoCamion()">
+        <input type="button" id="button3" class="claseboton" onclick="transferencia()">
+        <input type="button" id="button4" class="claseboton" onclick="abrirModal()">
+        <input type="button" id="button5" class="claseboton" onclick="pagar()">
+    </div>
+    <div id="feedback" class="feedback"></div>
+    <div class="total">
+        <h1 id="total">$0.00</h1>
+    </div>
+</div>
+
+<div id="modal" class="modal">
+    <div class="contenido-modal">
+        <h2>Selecciona un Saldo</h2>
+        <img src="./img/50MX.png" style="height: 10%; width: 10%;" onclick="saldo50()">
+        <img src="./img/100MX.png" style="height: 10%; width: 10%;" onclick="saldo100()">
+        <img src="./img/200MX.png" style="height: 10%; width: 10%;" onclick="saldo200()">
+        <img src="./img/500MX.png" style="height: 10%; width: 10%;" onclick="saldo500()">
+        <br>
+        <br>
+        <button onclick="cerrarModal()">Cerrar</button>
+    </div>
+</div>
+</body>
+</html>
